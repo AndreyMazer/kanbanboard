@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/AndreyMazer/kanbanboard/issues"
   },
-  "homepage": "https://github.com/AndreyMazer/kanbanboard#readme"
+  "homepage": "https://github.com/AndreyMazer/kanbanboard#readme",
+  "dependencies": {
+    "jquery": "^3.7.1"
+  }
 }
