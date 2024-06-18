@@ -1,21 +1,5 @@
-body {
-    background-color: rgb(0, 0, 0);
-    display: flex;
-    margin: 0 auto;
-    justify-content: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #86879d;
-}
-
-#root {
-    width: 1500px;
-}
-
-h1,
-h2,
-h3 {
-    font-weight: 400;
-}
+@import url(./vendor/fonts.css);
+@import url(./index.css);
 
 .kanban_title {
     font-size: 30px;
@@ -24,8 +8,7 @@ h3 {
 }
 
 .column_title {
-  color: #b7fff9;
-  
+    color: #b7fff9;
 }
 
 .kanban {
@@ -67,21 +50,21 @@ h3 {
     background-color: #0072b1;
     margin-top: 15px;
     border-radius: 5px;
-    border: 1px solid #b7fff9;;
+    border: 1px solid #b7fff9;
 }
 
 .task_tittle {
-  color: #000000;
+    color: #000000;
 }
 
-.task_limit{
-  color: #000000;
+.task_limit {
+    color: #000000;
 }
 
 .task_user {
-  color: #000000;
-  font-size: large;
-  font-weight: 500;
+    color: #000000;
+    font-size: large;
+    font-weight: 500;
 }
 
 .task__header {
@@ -111,7 +94,7 @@ h3 {
 
 .button {
     padding: 5px;
-    border: 1px solid #b7fff9;;
+    border: 1px solid #b7fff9;
     border-radius: 5px;
     background-color: #0072b1;
     color: #b7fff9;
@@ -120,7 +103,7 @@ h3 {
 }
 
 .button:hover {
-    opacity: .5;
+    opacity: 0.5;
 }
 
 .button__left {
@@ -161,6 +144,8 @@ input {
     color: #b7fff9;
     background-color: #000000;
     border: 1px solid #73b0f7;
+    font-size: 15px;
+    font-weight: 600;
 }
 
 .form__submit {
@@ -172,11 +157,11 @@ input {
 
 .form__submit:hover,
 input:hover {
-    opacity: .8;
+    opacity: 0.8;
 }
 
 ::placeholder {
-  color: #b7fff9;
+    color: #b7fff9;
 }
 
 /* -------------------- media max 1230px --------------------  */
@@ -261,9 +246,10 @@ input:hover {
     }
 
     .form__container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        display: grid;
+        grid-template-areas:
+            'title user'
+            'submit submit';
         margin: 0 auto;
     }
 
@@ -272,44 +258,33 @@ input:hover {
         max-width: 320px;
         justify-content: center;
         margin: 0 auto;
-        /*background-color: #c2caf0;*/
-        border: none;
     }
 
     input {
-        width: 70%;
+        width: 80%;
         padding: 10px;
         margin-bottom: 20px;
-        margin-left: 30px;
-        /*background-color: #c2caf0;*/
         box-shadow: none;
-        /*border: 1px solid #765cb6;*/
         justify-content: center;
         text-align: center;
     }
 
     input::placeholder {
         justify-content: center;
-       /* color: #765cb6;*/
     }
 
     .form__submit {
-        width: 150px;
+        grid-area: submit;
+        width: 100%;
         margin: 0 auto;
     }
 
     .kanban {
         max-width: 300px;
-        /*background-color: #c2caf0;*/
-        border: none;
     }
 
     .task__delete {
         margin-left: 180px;
-    }
-
-    h1 {
-        /*color: #765cb6;*/
     }
 
     .btn_mobile {
