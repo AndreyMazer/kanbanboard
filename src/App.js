@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import './App.css';
 import Board from './components/Board.js'
-import Form from './components/Form';
+import Form from './components/Form.js';
 
 import {TaskContext, ColumnContext} from './context'
 
