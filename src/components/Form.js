@@ -55,7 +55,7 @@ function Form (props) {
         <form className='form' onSubmit={addTask}>
             <div className='form__container'>
                 <label> <input name='taskTitle' value={taskTitle} type='text' onChange={e => dispatch({type: 'change', element: e.target})} placeholder='задача' required/></label>
-                <label> <input name='user'  value={user} type='text' onChange={e => dispatch({type: 'change', element: e.target})}  placeholder='ответственный' required pattern= '^[a-zA-Z –-]+$'/></label>
+                <label> <input name='user'  value={user} type='text' onChange={e => dispatch({type: 'change', element: e.target})}  placeholder='ответственный' required pattern= '^[a-zA-Zа-яА-ЯёЁ –-]+$'/></label>
                 <input type="submit" value="ввод" className='form__submit' />
             </div>
         </form>
