@@ -70,13 +70,13 @@ function App() {
     }
 
     const removeTask = (task) => {
-        if (window.confirm("Are you sure you want to delete the task?") == true) {
+        if (window.confirm("Вы уверены, что хотите закрыть задачу?") == true) {
             const tasksList =  JSON.parse(localStorage.getItem('task'))
             const updateTasks = tasksList.filter(item => item.id !== task.id)
             
             setItem(updateTasks)
         } else {
-            window.alert("Deletion has been cancelled")
+            window.alert("Удаление было отменено")
         }
     }
 
