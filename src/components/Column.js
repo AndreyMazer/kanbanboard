@@ -10,12 +10,11 @@ export default class Column extends React.Component {
 
         const { Consumer: TaskConsumer } = TaskContext;
 
-        const { columnTitle, limit, className } = this.props
+        const { columnTitle,  className } = this.props
 
         return (
             <div className={className}>
                 <h2 className='column_title'>{columnTitle}</h2>
-                <p className='task_limit'>Tasks limit: {limit}</p>
                 <TaskConsumer>
                     {(context) => this.generateTaskList(context)}
                 </TaskConsumer>

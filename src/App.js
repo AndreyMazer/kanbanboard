@@ -8,10 +8,10 @@ import {TaskContext, ColumnContext} from './context'
 function App() {
 
     const columns = ([
-        { id: 1, title: 'Нужно сделать', limit: 20, className: 'column '},
-        { id: 2, title: 'В процессе', limit: 20, className: 'column '},
-        { id: 3, title: 'Проверка', limit: 20, className: 'column '},
-        { id: 4, title: 'Готово', limit: 20, className: 'column '}
+        { id: 1, title: 'Нужно сделать', limit: 4, className: 'column '},
+        { id: 2, title: 'В процессе', limit: 4, className: 'column '},
+        { id: 3, title: 'Проверка', limit: 4, className: 'column '},
+        { id: 4, title: 'Готово', limit: 4, className: 'column '}
     ])
 
     const tasksInMemory = JSON.parse(localStorage.getItem('task')) || [];
@@ -36,7 +36,7 @@ function App() {
             })
             setItem(taskList)
         } else {
-            alert('The task limit in the column cannot be exceeded')
+            alert('Превышено кол-во задач на одном этапе')
         }
     }
 
@@ -54,7 +54,7 @@ function App() {
             })
             setItem(taskList)
         } else {
-            alert('The task limit in the column cannot be exceeded')
+            alert('Превышено кол-во задач на одном этапе')
         }
     }
 
@@ -65,12 +65,12 @@ function App() {
             localStorage.setItem('task', JSON.stringify([...tasks, newTask]))
             setTasks(JSON.parse(localStorage.getItem('task')) || [])
         } else {
-            alert('Task limit (4) cannot be exceeded')
+            alert('Лимит задач (4) превышен')
         }
     }
 
     const removeTask = (task) => {
-        if (window.confirm("Вы уверены, что хотите закрыть задачу?") == true) {
+        if (window.confirm("Вы уверены, что хотите завершить задачу?") == true) {
             const tasksList =  JSON.parse(localStorage.getItem('task'))
             const updateTasks = tasksList.filter(item => item.id !== task.id)
             
