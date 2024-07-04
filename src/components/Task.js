@@ -13,23 +13,25 @@ function Task(props) {
     const { title, user } = task
     const { moveTask, moveBackTask, removeTask } = props
 
-    const twoDays = 2 * 24 * 60 * 60 * 1000;
+    const twentySeconds = 20 * 1000;
 
     useEffect(() => {
         const timer = setInterval(() => {
-            if (task.columnId === 1 || task.columnId === 4) {
-                setElapsedTime(prevTime => prevTime + 1);
-            } else {
-                setElapsedTime(0);
-            }
-        }, twoDays); // использование значения для 2 дней
+            setElapsedTime(prevTime => {
+                if (task.columnId !== 0) { // Проверяем, что столбец не равен 0
+                    return prevTime + 1000;
+                } else {
+                    return 0;
+                }
+            });
+        }, 1000);
     
         return () => clearInterval(timer);
     }, [task.columnId]);
 
 
     return (
-        <div className={`task ${elapsedTime > 10 ? 'task__highlight' : ''}`}>
+        <div className={`task ${elapsedTime > twentySeconds ? 'task__highlight' : ''}`}>
             <button onClick={() => removeTask(task)} className='task__delete'>{task.columnId !== 4 ? 'Х' : <FontAwesomeIcon icon={faCheckCircle} />}</button>
             <h3 className='task_tittle'>{title}</h3>
             <p className='task_user'>Имя: {user}</p>
@@ -58,7 +60,11 @@ function Task(props) {
 }
 
 Task.propTypes = {
-    item: PropTypes.object,
+    item: PropTypes.shape({
+        title: PropTypes.string,
+        user: PropTypes.string,
+        columnId: PropTypes.number
+    }),
     moveTask: PropTypes.func,
     moveBackTask: PropTypes.func,
     removeTask: PropTypes.func
