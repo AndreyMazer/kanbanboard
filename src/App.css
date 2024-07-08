@@ -167,8 +167,75 @@ input:hover {
 ::placeholder {
     color: #427c78;
 }
+.popup {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    top: 0;
+    min-width: 100%;
+    height: 100%;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+  }
 
-/* -------------------- media max 1230px --------------------  */
+  .popup_opened {
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .popup__infotooltip {
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #0072b1;
+    border: 2px solid #b7fff9;
+    text-align: center;
+    padding: 60px 36px 60px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+  }
+
+  .popup__close-button {
+    position: absolute;
+    top: -40px;
+    left: 438px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background-image: url(../src/images/ClosePopup.png);
+    background-color: rgba(0, 0, 0, 0);
+    background-position: center;
+    cursor: pointer;
+  }
+  
+  .popup__close-button:hover {
+    opacity: 0.6;
+  }
+  
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    
+  }
+
+  .popup__feedback {
+    margin: 0;
+    max-width: 358px;
+    margin-top: 32px;
+    color: black;
+    text-align: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+  }
+
+  /* -------------------- media max 1230px --------------------  */
 @media (max-width: 1230px) {
     #root {
         width: 1230px;
@@ -229,7 +296,7 @@ input:hover {
 }
 
 /* -------------------- media max 620px --------------------  */
-@media (max-width: 620px) {
+@media screen and (min-width: 320px) and (max-width: 620px) {
     .column {
         padding: 10px;
         min-width: 90%;
@@ -301,4 +368,15 @@ input:hover {
     .btn_desktop {
         display: none;
     }
+
+    .popup__close-button {
+        width: 20px;
+        height: 20px;
+        left: 270px;
+      }
+      .popup__infotooltip {
+        width: 282px;
+        height: 282px;
+        padding: 20px 5px 5px;
+      }
 }

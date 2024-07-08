@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons'
-import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons'
-import { faArrowDownLong } from '@fortawesome/free-solid-svg-icons'
-import { faArrowUpLong } from '@fortawesome/free-solid-svg-icons'
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeftLong, faArrowRightLong, faArrowUpLong, faArrowDownLong, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 function Task(props) {
     const [elapsedTime, setElapsedTime] = useState(0);
@@ -15,20 +11,31 @@ function Task(props) {
 
     const twentySeconds = 20 * 1000;
 
+    // Получение времени из localStorage
     useEffect(() => {
-        const timer = setInterval(() => {
-            setElapsedTime(prevTime => {
-                if (task.columnId !== 0) { // Проверяем, что столбец не равен 0
-                    return prevTime + 1000;
-                } else {
-                    return 0;
-                }
-            });
-        }, 1000);
-    
-        return () => clearInterval(timer);
-    }, [task.columnId]);
+        const storedTime = localStorage.getItem(`task-${task.id}-time`);
+        if (storedTime) {
+            setElapsedTime(parseInt(storedTime, 10));
+        }
+    }, []); // Запускается только один раз при монтировании компонента
 
+    // Обновление таймера
+    useEffect(() => {
+        let timer;
+        if (task.columnId !== 0) { // Проверяем, что столбец не равен 0
+            timer = setInterval(() => {
+                setElapsedTime(prevTime => {
+                    const newTime = prevTime + 1000;
+                    localStorage.setItem(`task-${task.id}-time`, newTime); // Сохраняем время в localStorage
+                    return newTime;
+                });
+            }, 1000);
+        }
+        return () => {
+            clearInterval(timer);
+            localStorage.removeItem(`task-${task.id}-time`); // Удаляем время из localStorage при размонтировании
+        };
+    }, [task.columnId]); // Запускается при изменении task.columnId
 
     return (
         <div className={`task ${elapsedTime > twentySeconds ? 'task__highlight' : ''}`}>
@@ -63,7 +70,8 @@ Task.propTypes = {
     item: PropTypes.shape({
         title: PropTypes.string,
         user: PropTypes.string,
-        columnId: PropTypes.number
+        columnId: PropTypes.number,
+        id: PropTypes.number
     }),
     moveTask: PropTypes.func,
     moveBackTask: PropTypes.func,

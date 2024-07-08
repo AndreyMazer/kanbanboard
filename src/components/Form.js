@@ -27,8 +27,8 @@ function Form (props) {
 
     const formValidation = errors => {
 
-        if(taskTitle.length < 2) errors.push('Task name is required')
-        if(user.length < 2) errors.push('User name is required')
+        if(taskTitle.length < 2) errors.push('Миимальное количество символов - 2')
+        if(user.length < 2) errors.push('Миимальное количество символов - 2')
     }
 
     const addTask = e => {
