@@ -3,6 +3,7 @@ import './App.css';
 import Board from './components/Board.js'
 import Form from './components/Form.js';
 import InfoTooltip from './components/InfoToolTip.js';
+import PopupDeleteCard from './components/PopupDeleteCard.js';
 
 import { TaskContext, ColumnContext } from './context'
 
@@ -26,6 +27,8 @@ function App() {
     const [infoTooltipIsOpen, setInfoTooltipIsOpen] = useState(false); // Создаем state для InfoTooltip
     const [infoTooltipStatus, setInfoTooltipStatus] = useState(false); // Создаем state для статуса InfoTooltip
     const [infoTooltipMessage, setInfoTooltipMessage] = useState('');
+    const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false); // Состояние для PopupDeleteCard
+    const [taskToDelete, setTaskToDelete] = useState(null);
 
     const moveTask = task => {
         if (task.columnId === 4) { return }
@@ -44,7 +47,6 @@ function App() {
             setInfoTooltipIsOpen(true);
             setInfoTooltipStatus(true);
         } else {
-            // Заменяем alert на открытие InfoTooltip с ошибкой
             setInfoTooltipIsOpen(true);
             setInfoTooltipStatus(false);
             setInfoTooltipMessage("Превышено кол-во задач на одном этапе.");
@@ -91,25 +93,37 @@ function App() {
     }
 
     const removeTask = (task) => {
-        if (window.confirm("Вы уверены, что хотите завершить задачу?") == true) {
-            const tasksList = JSON.parse(localStorage.getItem('task'))
-            const updateTasks = tasksList.filter(item => item.id !== task.id)
+        // Открываем PopupDeleteCard с задачей, которую нужно удалить
+        setIsDeletePopupOpen(true);
+        setTaskToDelete(task);
+    };
 
-            setItem(updateTasks)
+    const handleDeleteTask = () => {
+        // Логика удаления задачи
+        if (taskToDelete) {
+            const tasksList = JSON.parse(localStorage.getItem('task'));
+            const updateTasks = tasksList.filter(item => item.id !== taskToDelete.id);
+
+            setItem(updateTasks);
             setInfoTooltipIsOpen(true);
             setInfoTooltipStatus(true);
             setInfoTooltipMessage("Задача завершена!");
-        } else {
-            setInfoTooltipIsOpen(true);
-            setInfoTooltipStatus(false);
+            setIsDeletePopupOpen(false); // Закрываем PopupDeleteCard после удаления
+            setTaskToDelete(null); // Сбрасываем состояние задачи для удаления
         }
-    }
+    };
 
     const { Provider: TaskProvider } = TaskContext;
     const { Provider: ColumnProvider } = ColumnContext;
 
     return (
         <>
+            <PopupDeleteCard
+                isOpen={isDeletePopupOpen}
+                onClose={() => setIsDeletePopupOpen(false)}
+                onDelete={handleDeleteTask}
+                removeTask={removeTask}
+            />
             <InfoTooltip
                 isOpen={infoTooltipIsOpen} // Передаем state в InfoTooltip
                 onClose={() => setInfoTooltipIsOpen(false)} // Функция для закрытия InfoTooltip

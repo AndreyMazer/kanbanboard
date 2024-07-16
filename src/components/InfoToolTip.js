@@ -25,7 +25,7 @@ function InfoTooltip(props) {
     );
 }
 
-InfoTooltip.propTypes = { // Добавляем propTypes
+InfoTooltip.propTypes = { 
     isOpen: PropTypes.bool.isRequired,
     status: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired,
