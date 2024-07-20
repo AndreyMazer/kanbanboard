@@ -182,15 +182,15 @@ input:hover {
     height: 100%;
     position: fixed;
     background: rgba(0, 0, 0, 0.5);
-  }
+}
 
-  .popup_opened {
+.popup_opened {
     display: flex;
     visibility: visible;
     opacity: 1;
-  }
+}
 
-  .popup__infotooltip {
+.popup__infotooltip {
     position: relative;
     margin: 0 auto;
     padding: 0;
@@ -200,9 +200,9 @@ input:hover {
     padding: 60px 36px 60px;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
-  }
+}
 
-  .popup__close-button {
+.popup__close-button {
     position: absolute;
     top: -40px;
     left: 435px;
@@ -213,41 +213,42 @@ input:hover {
     background-color: rgba(0, 0, 0, 0);
     background-position: center;
     cursor: pointer;
-  }
-  
-  .popup__close-button:hover {
-    opacity: 0.6;
-  }
-
-  .popup__feedback {
-    margin: 0;
-    width: 358px;
-    margin-top: 32px;
-    color: black;
-    text-align: center;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 900;
-    line-height: normal;
-    height: 40px; 
-  }
-
-.popup__question{
-    margin: 0;
-    width: 358px;
-    margin-top: 32px;
-    color: black;
-    text-align: center;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 900;
-    line-height: normal;
-    height: 40px; 
 }
 
-  .popup__delete {
+.popup__close-button:hover {
+    opacity: 0.6;
+}
+
+.popup__feedback {
+    margin: 0;
+    width: 358px;
+    margin-top: 32px;
+    color: black;
+    text-align: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    height: 40px;
+}
+
+.popup__question {
+    margin: 0;
+    width: 358px;
+    margin: 32px auto 0;
+    color: black;
+    text-align: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    height: 40px;
+}
+
+.popup__delete {
     width: 200px;
     height: 50px;
+    margin: 32px auto 0;
     background-color: #0072b1;
     border: 2px solid #73b0f7;
     color: black;
@@ -259,14 +260,31 @@ input:hover {
     cursor: pointer;
     box-shadow: none;
     border-radius: 5px;
-  }
+}
 
-  .popup__delete:hover
- {
+.popup__delete:hover {
     opacity: 0.8;
 }
 
-  /* -------------------- media max 1230px --------------------  */
+.popup__submit {
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #0072b1;
+    border: 2px solid #b7fff9;
+    text-align: center;
+    padding: 40px 36px 60px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+}
+
+.formDel {
+    margin: 0;
+    padding: 0;
+    min-height: 50px;
+}
+
+/* -------------------- media max 1230px --------------------  */
 @media (max-width: 1230px) {
     #root {
         width: 1230px;
@@ -404,14 +422,29 @@ input:hover {
         width: 20px;
         height: 20px;
         left: 270px;
-      }
-      .popup__infotooltip {
+    }
+    .popup__infotooltip {
         width: 282px;
         height: 282px;
         padding: 20px 5px 5px;
-      }
+    }
 
-      .popup__feedback {
+    .popup__submit {
+        width: 282px;
+        height: 250px;
+        padding: 20px 5px 5px;
+    }
+
+    .popup__feedback {
         width: 100%;
-      }
+    }
+
+    .popup__question {
+        width: 280px;
+        margin-top: 50px;
+    }
+
+    .popup__delete {
+        margin-top: 40px;
+    }
 }

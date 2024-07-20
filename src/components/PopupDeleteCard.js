@@ -10,7 +10,7 @@ function PopupDeleteCard(props) {
 
     return (
         <div className={`popup  ${props.isOpen ? 'popup_opened' : ''}`}>
-            <div className="popup__infotooltip">
+            <div className="popup__submit">
                 <button
                     onClick={props.onClose}
                     type="button"
