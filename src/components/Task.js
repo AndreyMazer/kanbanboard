@@ -41,7 +41,7 @@ function Task(props) {
         <div className={`task ${elapsedTime > twentySeconds ? 'task__highlight' : ''}`}>
             <button onClick={() => removeTask(task)} className='task__delete'>{task.columnId !== 4 ? 'Х' : <FontAwesomeIcon icon={faCheckCircle} />}</button>
             <h3 className='task_tittle'>{title}</h3>
-            <p className='task_user'>Имя: {user}</p>
+            <p className='task_user'>Делает: {user}</p>
             {task.columnId !== 1 && (
                 <button onClick={() => moveBackTask(task)} className='button__left btn_desktop button'>
                     <FontAwesomeIcon icon={faArrowLeftLong} />

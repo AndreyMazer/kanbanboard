@@ -59,6 +59,7 @@
 
 .task_tittle {
     color: #000000;
+    word-wrap: break-word;
 }
 
 .task_limit {
@@ -69,6 +70,7 @@
     color: #000000;
     font-size: large;
     font-weight: 500;
+    word-wrap: break-word;
 }
 
 .task__header {
@@ -167,6 +169,19 @@ input:hover {
 ::placeholder {
     color: #427c78;
 }
+
+.form__error {
+    display: inline-block;
+    position: absolute;
+    width: 358px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 10px;
+    line-height: 12px;
+    color: rgba(255, 96, 149, 0.856);
+    min-height: 24px;
+}
+
 .popup {
     visibility: hidden;
     opacity: 0;
@@ -369,6 +384,7 @@ input:hover {
         display: grid;
         grid-template-areas:
             'title user'
+            'span span'
             'submit submit';
         margin: 0 auto;
     }
