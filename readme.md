@@ -1,5 +1,15 @@
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Roboto&size=35&pause=1000&color=2450fa&random=false&width=435&lines=Kanban+Board)](https://git.io/typing-svg)
 
+#### Kanban Board - это пет-проект, предполагающий организацию и визуализацию рабочего процесса 
+![Kanban Board - это пет-проект, предполагающий организацию и визуализацию рабочего процесса ](https://arturssmirnovs.github.io/github-profile-readme-generator/images/banner.png)
+
+В проекте реализовано:
+Верстка/адаптивная верстка;
+Добавление/удаление задач;
+Таймер срока задачи;
+Ограничение кол-ва задач на 1 этап;
+Валидация;
+
 
 ## Сделано с помощью:
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
