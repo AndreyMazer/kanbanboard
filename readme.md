@@ -14,3 +14,4 @@
 
 # [ССЫЛКА НА ПРОЕКТ](https://andreymazer.github.io/kanbanboard/)
 
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?AndreyMazer=anuraghazra)](https://github.com/anuraghazra/github-readme-stats)
