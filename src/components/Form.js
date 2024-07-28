@@ -32,6 +32,8 @@ function Form (props) {
 
         if (taskTitle.length < 2) validationErrors.taskTitle = 'Минимальное количество символов - 2';
         if (user.length < 2) validationErrors.user = 'Минимальное количество символов - 2';
+        if (taskTitle.length === 0) validationErrors.taskTitle = 'Поле должно быть заполнено';
+        if (user.length === 0) validationErrors.user = 'Поле должно быть заполнено';
 
         setErrors(validationErrors);
         return validationErrors;
@@ -67,9 +69,7 @@ function Form (props) {
                         placeholder='задача'
                     />
                     {errors.taskTitle && <span className="form__error form__error_title">{errors.taskTitle}</span>}
-                </label>
-                
-                
+                </label>             
                 <label>
                     <input
                         name='user'
@@ -81,8 +81,6 @@ function Form (props) {
                     />
                     {errors.user && <span className="form__error form__error_user">{errors.user}</span>}
                 </label>
-                
-                
                 <input type="submit" value="ввод" className='form__submit' />
             </div>
         </form>
