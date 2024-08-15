@@ -4,8 +4,15 @@ import okPic from "../images/galka.png";
 import errorPic from "../images/neverno.png";
 
 function InfoTooltip(props) {
+    const handleOverlayClick = (event) => {
+        // Проверяем, что клик был именно на оверлей, а не внутри попапа
+        if (event.target === event.currentTarget) {
+            props.onClose();
+        }
+    };
+
     return (
-        <div className={`popup ${props.isOpen ? "popup_opened" : ""}`}>
+        <div className={`popup ${props.isOpen ? "popup_opened" : ""}`} onClick={handleOverlayClick}>
             <div className="popup__infotooltip">
                 <img
                     className="popup__regImage"
@@ -25,7 +32,7 @@ function InfoTooltip(props) {
     );
 }
 
-InfoTooltip.propTypes = { 
+InfoTooltip.propTypes = {
     isOpen: PropTypes.bool.isRequired,
     status: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired,

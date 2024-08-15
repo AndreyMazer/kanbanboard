@@ -6,10 +6,15 @@ function PopupDeleteCard(props) {
         event.preventDefault();
         props.onDelete(); // Вызываем функцию onDelete для удаления задачи
     };
-
+    const handleOverlayClick = (event) => {
+        // Проверяем, что клик был именно на оверлей, а не внутри попапа
+        if (event.target === event.currentTarget) {
+            props.onClose();
+        }
+    };
 
     return (
-        <div className={`popup  ${props.isOpen ? 'popup_opened' : ''}`}>
+        <div className={`popup  ${props.isOpen ? 'popup_opened' : ''}`} onClick={handleOverlayClick}>
             <div className="popup__submit">
                 <button
                     onClick={props.onClose}
