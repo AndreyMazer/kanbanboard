@@ -32,8 +32,8 @@ function Form (props) {
 
         if (taskTitle.length < 2) validationErrors.taskTitle = 'Минимальное количество символов - 2';
         if (user.length < 2) validationErrors.user = 'Минимальное количество символов - 2';
-        if (taskTitle.length === 0) validationErrors.taskTitle = 'Поле должно быть заполнено';
-        if (user.length === 0) validationErrors.user = 'Поле должно быть заполнено';
+        if (taskTitle.length === 0) validationErrors.taskTitle = 'Что сделать-то надо?';
+        if (user.length === 0) validationErrors.user = 'А отвественный-то кто?';
 
         setErrors(validationErrors);
         return validationErrors;
