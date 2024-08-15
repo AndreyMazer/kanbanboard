@@ -1,0 +1,120 @@
+.task {
+    padding: 10px;
+    min-width: 230px;
+    background-color: #0072b1;
+    margin-top: 15px;
+    border-radius: 5px;
+    border: 1px solid #b7fff9;
+}
+
+.task__highlight {
+    background-color: rgba(255, 96, 149, 0.856);
+}
+
+.task_tittle {
+    color: #000000;
+    word-wrap: break-word;
+}
+
+.task_limit {
+    color: #000000;
+}
+
+.task_user {
+    color: #000000;
+    font-size: large;
+    font-weight: 500;
+    word-wrap: break-word;
+}
+
+.task__header {
+    display: flex;
+    justify-content: center;
+}
+
+.task__delete {
+    padding: 5px;
+    margin-left: 230px;
+    background: rgb(0 0 0 / 0%);
+    border: none;
+    color: #b7fff9;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.task__delete:hover {
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+}
+
+.button {
+    padding: 5px;
+    border: 1px solid #b7fff9;
+    border-radius: 5px;
+    background: rgb(0 0 0 / 0%);
+    color: #b7fff9;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.button:hover {
+    opacity: 0.5;
+}
+
+.button__left {
+    margin-right: 30px;
+}
+
+.button__right {
+    margin-left: 30px;
+}
+
+.btn_mobile {
+    display: none;
+}
+
+@media (max-width: 1230px) {
+    .task {
+        padding: 10px;
+        min-width: 20%;
+        margin-top: 15px;
+    }
+
+    .task__delete {
+        margin-left: 160px;
+    }
+}
+
+@media (max-width: 990px) {
+    .task {
+        padding: 10px;
+        margin-top: 15px;
+    }
+
+    .task__delete {
+        margin-left: 200px;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 620px) {
+    .task {
+        padding: 10px;
+        min-width: 120px;
+        margin-top: 15px;
+    }
+
+    .task__delete {
+        margin-left: 180px;
+    }
+
+    .btn_mobile {
+        display: flex;
+        margin: 0 auto;
+        margin-top: 5px;
+        padding: 2px 8px 2px 8px;
+    }
+
+    .btn_desktop {
+        display: none;
+    }
+}

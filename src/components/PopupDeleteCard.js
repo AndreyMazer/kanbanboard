@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function PopupDeleteCard(props) {
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
         props.onDelete(); // Вызываем функцию onDelete для удаления задачи
     };
-    const handleOverlayClick = (event) => {
+    const handleOverlayClick = (evt) => {
         // Проверяем, что клик был именно на оверлей, а не внутри попапа
-        if (event.target === event.currentTarget) {
+        if (evt.target === evt.currentTarget) {
             props.onClose();
         }
     };

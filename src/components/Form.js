@@ -39,8 +39,8 @@ function Form (props) {
         return validationErrors;
     };
 
-    const addTask = (e) => {
-        e.preventDefault();
+    const addTask = (evt) => {
+        evt.preventDefault();
 
         const validationErrors = formValidation();
 

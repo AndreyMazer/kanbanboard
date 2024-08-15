@@ -4,9 +4,9 @@ import okPic from "../images/galka.png";
 import errorPic from "../images/neverno.png";
 
 function InfoTooltip(props) {
-    const handleOverlayClick = (event) => {
+    const handleOverlayClick = (evt) => {
         // Проверяем, что клик был именно на оверлей, а не внутри попапа
-        if (event.target === event.currentTarget) {
+        if (evt.target === evt.currentTarget) {
             props.onClose();
         }
     };
