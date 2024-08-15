@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/kanbanboard/static/css/main.e3fd901e.css",
-    "main.js": "/kanbanboard/static/js/main.c97cd6f8.js",
+    "main.js": "/kanbanboard/static/js/main.35b2bba3.js",
     "static/js/453.3f9f735f.chunk.js": "/kanbanboard/static/js/453.3f9f735f.chunk.js",
     "static/media/Inter-Bold.woff": "/kanbanboard/static/media/Inter-Bold.93c1301bd9f486c573b3.woff",
     "static/media/Inter-Black.woff": "/kanbanboard/static/media/Inter-Black.c6938660eec019fefd68.woff",
@@ -11,11 +11,11 @@
     "static/media/Inter-Regular.woff2": "/kanbanboard/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
     "index.html": "/kanbanboard/index.html",
     "main.e3fd901e.css.map": "/kanbanboard/static/css/main.e3fd901e.css.map",
-    "main.c97cd6f8.js.map": "/kanbanboard/static/js/main.c97cd6f8.js.map",
+    "main.35b2bba3.js.map": "/kanbanboard/static/js/main.35b2bba3.js.map",
     "453.3f9f735f.chunk.js.map": "/kanbanboard/static/js/453.3f9f735f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e3fd901e.css",
-    "static/js/main.c97cd6f8.js"
+    "static/js/main.35b2bba3.js"
   ]
 }
