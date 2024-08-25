@@ -6,7 +6,7 @@ import { faArrowLeftLong, faArrowRightLong, faArrowUpLong, faArrowDownLong, faCh
 function Task(props) {
     const [elapsedTime, setElapsedTime] = useState(0);
     const task = props.item
-    const { title, user } = task
+    const { title, user, date } = task
     const { moveTask, moveBackTask, removeTask } = props
 
     const twentySeconds = 20 * 1000;
@@ -37,11 +37,21 @@ function Task(props) {
         };
     }, [task.columnId]); // Запускается при изменении task.columnId
 
+    // Функция для форматирования даты
+    const formatDate = (dateString) => {
+        const dateObj = new Date(dateString);
+        const day = String(dateObj.getDate()).padStart(2, '0'); // Получаем день
+        const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // Получаем месяц (месяцы начинаются с 0)
+        const year = dateObj.getFullYear(); // Получаем год
+        return `${day}.${month}.${year}`; // Возвращаем строку в нужном формате
+    };
+
     return (
         <div className={`task ${elapsedTime > twentySeconds ? 'task__highlight' : ''}`}>
             <button onClick={() => removeTask(task)} className='task__delete'>{task.columnId !== 4 ? 'Х' : <FontAwesomeIcon icon={faCheckCircle} />}</button>
             <h3 className='task_tittle'>{title}</h3>
             <p className='task_user'>Делает: {user}</p>
+            <p className='task_date'>Дедлайн: {formatDate(date)}</p> 
             {task.columnId !== 1 && (
                 <button onClick={() => moveBackTask(task)} className='button__left btn_desktop button'>
                     <FontAwesomeIcon icon={faArrowLeftLong} />
@@ -70,6 +80,7 @@ Task.propTypes = {
     item: PropTypes.shape({
         title: PropTypes.string,
         user: PropTypes.string,
+        date: PropTypes.string,
         columnId: PropTypes.number,
         id: PropTypes.number
     }),

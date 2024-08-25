@@ -27,6 +27,13 @@
     word-wrap: break-word;
 }
 
+.task_date {
+    color: #000000;
+    font-size: medium;
+    font-weight: 500;
+    word-wrap: break-word;
+}
+
 .task__header {
     display: flex;
     justify-content: center;

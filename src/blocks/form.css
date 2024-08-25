@@ -16,6 +16,7 @@
 }
 
 input {
+    height: 17px;
     padding: 8px;
     margin: 5px;
     border-radius: 5px;
@@ -43,6 +44,10 @@ input:hover {
     color: #427c78;
 }
 
+input[type='date'] {
+    color: #427c78;
+}
+
 .form__error {
     display: inline-block;
     margin-left: auto;
@@ -58,14 +63,23 @@ label {
     flex-direction: column;
 }
 
+@media screen and (min-width: 621px) and (max-width: 720px) {
+    label {
+        width: 150px;
+    }
+}
+
 @media screen and (min-width: 320px) and (max-width: 620px) {
     .form__container {
         display: grid;
+        grid-template-columns: 1fr 1fr;
         grid-template-areas:
             'title user'
             'span span'
+            'date date'
+            'span1 span1'
             'submit submit';
-        margin: 0 auto;
+        
     }
 
     .form {
@@ -73,6 +87,18 @@ label {
         max-width: 320px;
         justify-content: center;
         margin: 0 auto;
+    }
+    .form__area_title {
+        grid-area: title;
+    }
+    
+    .form__area_user {
+        grid-area: user;
+    }
+    
+    .form__area_dueDate {
+        grid-area: date;
+        width: 100%;
     }
 
     input {
@@ -96,5 +122,10 @@ label {
     .form__error {
         margin-bottom: 10px;
         text-align: center;
+    }
+    
+    input[name='dueDate'] {
+       margin: 0 auto;
+       width: 93%;
     }
 }
