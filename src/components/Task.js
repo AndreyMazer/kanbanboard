@@ -4,38 +4,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeftLong, faArrowRightLong, faArrowUpLong, faArrowDownLong, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 function Task(props) {
-    const [elapsedTime, setElapsedTime] = useState(0);
+    //const [elapsedTime, setElapsedTime] = useState(0);
+    const [isOverdue, setIsOverdue] = useState(false);
     const task = props.item
     const { title, user, date } = task
     const { moveTask, moveBackTask, removeTask } = props
 
-    const twentySeconds = 20 * 1000;
-
-    // Получение времени из localStorage
+    // Проверка на просроченность
     useEffect(() => {
-        const storedTime = localStorage.getItem(`task-${task.id}-time`);
-        if (storedTime) {
-            setElapsedTime(parseInt(storedTime, 10));
-        }
-    }, []); // Запускается только один раз при монтировании компонента
-
-    // Обновление таймера
-    useEffect(() => {
-        let timer;
-        if (task.columnId !== 0) { // Проверяем, что столбец не равен 0
-            timer = setInterval(() => {
-                setElapsedTime(prevTime => {
-                    const newTime = prevTime + 1000;
-                    localStorage.setItem(`task-${task.id}-time`, newTime); // Сохраняем время в localStorage
-                    return newTime;
-                });
-            }, 1000);
-        }
-        return () => {
-            clearInterval(timer);
-            localStorage.removeItem(`task-${task.id}-time`); // Удаляем время из localStorage при размонтировании
+        const checkDueDate = () => {
+            const currentDate = new Date();
+            const dueDate = new Date(date);
+            if (currentDate > dueDate) {
+                setIsOverdue(true);
+            }
         };
-    }, [task.columnId]); // Запускается при изменении task.columnId
+
+        checkDueDate(); // Проверяем при монтировании
+        const interval = setInterval(checkDueDate, 60000); // Проверяем каждые 60 секунд
+        return () => clearInterval(interval); // Очищаем интервал при размонтировании
+    }, [date]);
 
     // Функция для форматирования даты
     const formatDate = (dateString) => {
@@ -47,7 +35,7 @@ function Task(props) {
     };
 
     return (
-        <div className={`task ${elapsedTime > twentySeconds ? 'task__highlight' : ''}`}>
+        <div className={`task ${isOverdue ? 'task__highlight' : ''}`}>
             <button onClick={() => removeTask(task)} className='task__delete'>{task.columnId !== 4 ? 'Х' : <FontAwesomeIcon icon={faCheckCircle} />}</button>
             <h3 className='task_tittle'>{title}</h3>
             <p className='task_user'>Делает: {user}</p>

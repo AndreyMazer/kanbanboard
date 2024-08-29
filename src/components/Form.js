@@ -13,7 +13,7 @@ function Form(props) {
         case 'change':
             /*eslint-disable */
                 const { name, value } = action.element;
-                /*eslint-enable */
+     
             return { ...state, [name]: value };
         default:
             return state;
@@ -45,17 +45,29 @@ function Form(props) {
 
         const validationErrors = formValidation();
 
-        if (!validationErrors.taskTitle && !validationErrors.user) {
-            const newTask = {
-                id: uuid(),
-                title: taskTitle,
-                user: user,
-                date: dueDate,
-                columnId: 1,
-            };
-            getNewTask(newTask);
-            dispatch({ type: 'reset' });
-            setErrors({ taskTitle: '', user: '', dueDate: ''}); // Сброс ошибок
+        const currentDate = new Date();
+        const selectedDate = new Date(dueDate);
+
+
+        if (!validationErrors.taskTitle && !validationErrors.user && !validationErrors.dueDate) {
+            // Проверяем, что дата не в прошлом
+            if (selectedDate < currentDate.setHours(0, 0, 0, 0)) {
+                validationErrors.dueDate = 'Дата не может быть в прошлом!';
+            } else {
+                const newTask = {
+                    id: uuid(),
+                    title: taskTitle,
+                    user: user,
+                    date: dueDate,
+                    columnId: 1,
+                };
+                getNewTask(newTask);
+                dispatch({ type: 'reset' });
+                setErrors({ taskTitle: '', user: '', dueDate: ''}); // Сброс ошибок
+            }
+        } else {
+        // Если есть ошибки валидации, обновляем состояние ошибок
+            setErrors(validationErrors);
         }
     };
 
