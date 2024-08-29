@@ -1,5 +1,5 @@
-@import url(./vendor/fonts.css);
 @import url(./index.css);
+@import url(./vendor/fonts.css);
 @import url(./blocks/columns.css);
 @import url(./blocks/board.css);
 @import url(./blocks/task.css);
