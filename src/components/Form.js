@@ -99,7 +99,7 @@ function Form(props) {
                     <input
                         name='dueDate'
                         value={dueDate}
-                        type='date'
+                        type='text'
                         onChange={evt => dispatch({ type: 'change', element: evt.target })}
 
                     />
